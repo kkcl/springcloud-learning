@@ -1,5 +1,4 @@
 package com.kkcl.springcloud.controller;
-
 import com.kkcl.springcloud.entities.CommonResult;
 import com.kkcl.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
@@ -19,12 +18,12 @@ public class OrderController {
     private RestTemplate restTemplate;
 
     @GetMapping("/consumer/payment/create")
-    public CommonResult<Payment> create(Payment payment){
+    public CommonResult create(Payment payment){
         return restTemplate.postForObject(PAYMENT_URL + "/payment/create",payment, CommonResult.class);
     }
 
     @GetMapping("/consumer/payment/get/{id}")
-    public CommonResult<Payment> getPayment(@PathVariable("id") Long id){
+    public CommonResult getPayment(@PathVariable("id") Long id){
         return restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
     }
 }
